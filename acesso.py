@@ -11,6 +11,7 @@ from selenium.webdriver.chrome.service import Service
 
 reels = []
 posts = []
+imagens = []
 elementos = []
 dados = []
 
@@ -68,30 +69,23 @@ class InstagramBot:
             if "instagram.com/p/" in post_link:
                 posts.append(post_link)
                 print(post_link)
-        tempo(5)
-        driver.get(posts[0])
-        tempo(7)
 
-    def pegaimagem(self):
-        driver = self.driver
-        aux = driver.find_elements(By.TAG_NAME, 'ul')
-        for dado in aux:
-            nome=dado.text
-            print(nome)
-        #imagem = aux.find_elements(By.TAG_NAME,'img')
-        #for dado in imagem:
-        #    foto=dado.get_attribute("src")
-        #    if ("http" in foto):
-        #        print(foto)
-        tempo(20)
-        #driver.close()
+        for dado in posts:
+            if "fbcdn.net" in dado:
+            #    imagens.append(nome)
+                print(dado)
+
+        tempo(10)
+#        driver.get(posts[0])
+        tempo(12)
+        driver.close()
 
 
-conexao()
-#Bot = InstagramBot('cristais_serra', 'Vela!hot5')
-#Bot.login()
-#Bot.pegaposts()
-#Bot.pegaimagem()
+
+#conexao()
+Bot = InstagramBot('cristais_serra', 'Vela!hot5')
+Bot.login()
+Bot.pegaposts()
 
 
 
