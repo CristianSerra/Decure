@@ -17,7 +17,7 @@ function carregamento() {
             container.innerHTML+=`
                 <div class="carousel-item`+ primeiro + `">
                     <a href="https://`+val.link+`">
-                        <img src="`+val.imagem+`" class="d-block w-100" alt="...">
+                        <img src="imagens/`+val.imagem+`" class="d-block w-100" alt="...">
                     </a>
                     <div class="carousel-caption d-none d-md-block">
                     <h5>`+val.descricao+`</h5>
@@ -41,7 +41,7 @@ inicializarLoja = () => {
                 let preco = parseFloat(val.PrecoVenda);
                 container.innerHTML+=`
                     <div class="produto-single">
-                        <img src="images/`+val.Imagem+`" />
+                        <img src="imagens/`+val.Imagem+`" />
                         <p>`+val.Descricao+`</p>
                         <p>`+preco.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})+`</p>
                         <a class="botao" key="`+val.Codigo+`" href="#">Comprar<a/>

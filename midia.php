@@ -9,10 +9,13 @@
         echo "Problemas para conectar";
     }
 
-    $aux = explode("/", $_SERVER["REQUEST_URI"]);
-    $imagem=$aux[2];
-    $descricao=$aux[3];
-    $link=$aux[4];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $imagem= $_POST['imagem'];
+        $descricao=$_POST['descricao'];
+        $link=$_POST['link'];
+    }
+    #$aux = explode("/", $_SERVER["REQUEST_URI"]);
+    
 
     $sql="INSERT INTO midias (imagem, descricao, link ) VALUES ('$imagem','$descricao','$link')";
 
