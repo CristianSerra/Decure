@@ -1,9 +1,9 @@
 <?php
 // Configurações do banco de dados
 $host = 'localhost'; // Host do MySQL
-$dbname = 'nome_do_banco'; // Nome do banco de dados
-$username = 'usuario'; // Nome de usuário do MySQL
-$password = 'senha'; // Senha do MySQL
+$dbname = 'decure'; // Nome do banco de dados
+$username = 'FATEC'; // Nome de usuário do MySQL
+$password = 'Fat2023!'; // Senha do MySQL
 
 // Conexão com o banco de dados
 try {
