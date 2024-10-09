@@ -19,17 +19,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $categoria = $_POST['categoria'];
     $descricao = $_POST['descricao'];
+    $horario = $_POST['horario'];
+    $endereco = $_POST['endereco'];
+    $contato = $_POST['contato'];
+    $agendamento = $_POST['agendamento'];
     $link = $_POST['link'];
 
     // Inserir os dados no banco de dados
     try {
-        $sql = "INSERT INTO instituicoes (nome, categoria, descricao, link) VALUES (:nome, :categoria, :descricao, :link)";
+        $sql = "INSERT INTO instituicoes (nome, categoria, descricao, horario, endereco, contato, agendamento, link) VALUES (:nome, :categoria, :descricao, :horario, :endereco, :contato. :agendamento, :link)";
         $stmt = $pdo->prepare($sql);
         
         // Vincular os parâmetros
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':categoria', $categoria);
         $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':horario', $horario);
+        $stmt->bindParam(':endereco', $endereco);
+        $stmt->bindParam(':contato', $contato);
+        $stmt->bindParam(':agendamento', $agendamento);
         $stmt->bindParam(':link', $link);
         
         // Executar o comando SQL
