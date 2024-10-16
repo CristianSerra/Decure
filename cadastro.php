@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Inserir os dados no banco de dados
     try {
-        $sql = "INSERT INTO instituicoes (nome, categoria, descricao, horario, endereco, contato, agendamento, link) VALUES (:nome, :categoria, :descricao, :horario, :endereco, :contato. :agendamento, :link)";
+        $sql = "INSERT INTO instituicoes (nome, categoria, descricao, horario, endereco, contato, agendamento, link) VALUES (:nome, :categoria, :descricao, :horario, :endereco, :contato, :agendamento, :link)";
         $stmt = $pdo->prepare($sql);
         
         // Vincular os parâmetros
