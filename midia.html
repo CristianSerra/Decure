@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Imagens, Descrição e Links</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        tr {
+            height: 300px;
+        }
+        img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Filtragem de Dados coletados das mídias sociais</h1>
+
+<table>
+    <thead>
+        <tr style="height:50px">
+            <th>Controle</th>
+            <th>Imagem</th>
+            <th>Descrição</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody id="conteudo">
+
+    </tbody>
+</table>
+
+<script src="midia.js"></script>
+</body>
+</html>

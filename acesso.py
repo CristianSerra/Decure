@@ -26,7 +26,7 @@ def conexao():
         'link':'aqui e o robot.html'
     }
     try:
-        response = requests.post("http://localhost/decure/midia.php", data=dados)
+        response = requests.post("http://localhost/decure/midia-coleta.php", data=dados)
         if response.status_code == 200:
             print("resposta do servidor ", response.text)
         else:
