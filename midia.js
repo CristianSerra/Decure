@@ -14,9 +14,11 @@ function carregamento() {
                 <thead>
                     <tr style="height:50px">
                         <th>Controle</th>
-                        <th>Preview</th>
                         <th>Imagem</th>
                         <th>Descrição</th>
+                        <th>Endereço</th>
+                        <th>Contato</th>
+                        <th>Agendamento</th>
                         <th>Link</th>
                     </tr>
                 </thead>
@@ -30,11 +32,14 @@ function carregamento() {
         var conta=0;
         items.map((val)=>{
             container.innerHTML+=`
-            <tr style="height:90px">
+            <tr>
                 <td><input type="checkbox" name="controle[]" value="`+conta+`"></td>
-                <td style="width:300px"><img src='imagens/`+val.imagem+`' alt='Imagem'></td>
-                <td><input type="text" name="imagem[]" value="`+val.imagem+`"></td>
-                <td><input type="text" name="descricao[]" value="`+val.descricao+`"></td>
+                <td><img src='imagens/`+val.imagem+`' alt='Imagem'>
+                <input type="text" name="imagem[]" value="`+val.imagem+`"></td>
+                <td><textarea name="descricao[]" rows="4">`+val.descricao+`</textarea></td>
+                <td><textarea name="endereco[]" rows="4">`+val.endereco+`</textarea></td>
+                <td><input type="text" name="contato[]" value="`+val.contato+`"></td>
+                <td><textarea name="agendamento[]" rows="4">`+val.agendamento+`</textarea></td>
                 <td><input type="text" name="link[]" value="`+val.link+`"></td>
             </tr>
             `;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/10/2024 às 14:38
+-- Tempo de geração: 17/10/2024 às 13:54
 -- Versão do servidor: 10.4.22-MariaDB
 -- Versão do PHP: 8.1.2
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `decure`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `filtro`
+--
+
+CREATE TABLE `filtro` (
+  `id` int(11) NOT NULL,
+  `imagem` varchar(150) NOT NULL,
+  `descricao` varchar(150) NOT NULL,
+  `endereco` varchar(200) NOT NULL,
+  `contato` varchar(200) NOT NULL,
+  `agendamento` varchar(200) NOT NULL,
+  `link` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -80,6 +96,9 @@ CREATE TABLE `midias` (
   `id` int(11) NOT NULL,
   `imagem` varchar(200) NOT NULL,
   `descricao` varchar(200) NOT NULL,
+  `endereco` varchar(200) NOT NULL,
+  `contato` varchar(200) NOT NULL,
+  `agendamento` varchar(200) NOT NULL,
   `link` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -87,12 +106,19 @@ CREATE TABLE `midias` (
 -- Despejando dados para a tabela `midias`
 --
 
-INSERT INTO `midias` (`id`, `imagem`, `descricao`, `link`) VALUES
-(1, 'image1.png', 'teste de coleta', 'aqui e o robot.html');
+INSERT INTO `midias` (`id`, `imagem`, `descricao`, `endereco`, `contato`, `agendamento`, `link`) VALUES
+(1, 'image1.png', 'teste MIS', 'Av. Europa, 158', '(11) 2117-4777', '', 'https://mis-sp.org.br/'),
+(2, 'image2.png', 'Museu Lingua Portuguesa', 'Praça da Luz, s/nº - Centro Histórico de São Paulo', '', '', 'https://www.museudalinguaportuguesa.org.br/');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `filtro`
+--
+ALTER TABLE `filtro`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices de tabela `homepage`
@@ -117,6 +143,12 @@ ALTER TABLE `midias`
 --
 
 --
+-- AUTO_INCREMENT de tabela `filtro`
+--
+ALTER TABLE `filtro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `homepage`
 --
 ALTER TABLE `homepage`
@@ -132,7 +164,7 @@ ALTER TABLE `instituicoes`
 -- AUTO_INCREMENT de tabela `midias`
 --
 ALTER TABLE `midias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

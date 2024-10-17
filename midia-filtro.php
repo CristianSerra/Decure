@@ -13,13 +13,19 @@
         $controles=$_POST['controle'];
         $imagens= $_POST['imagem'];
         $descricoes=$_POST['descricao'];
+        $enderecos=$_POST['endereco'];
+        $contatos=$_POST['contato'];
+        $agendamentos=$_POST['agendamento'];
         $links=$_POST['link'];
         for ($i = 0; $i < count($controles); $i++) {            
             $aux = $controles[$i];
             $imagem = $imagens[$aux];
             $descricao = $descricoes[$aux];
+            $endereco = $enderecos[$aux];
+            $contato = $contatos[$aux];
+            $agendamento = $agendamentos[$aux];
             $link = $links[$aux];
-            $sql="INSERT INTO filtro (imagem, descricao, link ) VALUES ('$imagem','$descricao','$link')";
+            $sql="INSERT INTO filtro (imagem, descricao, endereco, contato, agendamento, link ) VALUES ('$imagem','$descricao','$endereco', '$contato', '$agendamento','$link')";
             mysqli_query($conexao,$sql);
         }
         echo "banco de dados atualizado";
