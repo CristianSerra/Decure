@@ -27,16 +27,18 @@ function carregamento() {
             <button type="submit">Enviar</button>
         </form>`;
         container = document.getElementById("conteudo");
+        var conta=0;
         items.map((val)=>{
             container.innerHTML+=`
             <tr style="height:90px">
-                <td><input type="checkbox" name="controle[]"></td>
+                <td><input type="checkbox" name="controle[]" value="`+conta+`"></td>
                 <td style="width:300px"><img src='imagens/`+val.imagem+`' alt='Imagem'></td>
                 <td><input type="text" name="imagem[]" value="`+val.imagem+`"></td>
                 <td><input type="text" name="descricao[]" value="`+val.descricao+`"></td>
                 <td><input type="text" name="link[]" value="`+val.link+`"></td>
             </tr>
             `;
+            conta++;
         });
     }
     xhr.send();

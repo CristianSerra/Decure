@@ -14,11 +14,11 @@
         $imagens= $_POST['imagem'];
         $descricoes=$_POST['descricao'];
         $links=$_POST['link'];
-        for ($i = 0; $i < count($controles); $i++) {
-            $controle = $controles[$i];
-            $imagem = $imagens[$i];
-            $descricao = $descricoes[$i];
-            $link = $links[$i];
+        for ($i = 0; $i < count($controles); $i++) {            
+            $aux = $controles[$i];
+            $imagem = $imagens[$aux];
+            $descricao = $descricoes[$aux];
+            $link = $links[$aux];
             $sql="INSERT INTO filtro (imagem, descricao, link ) VALUES ('$imagem','$descricao','$link')";
             mysqli_query($conexao,$sql);
         }
