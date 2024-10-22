@@ -2,7 +2,7 @@
     $servidor = 'localhost';
     $usuario = 'FATEC';
     $senha = 'Fat2023!';
-    $bancoDados = 'carros';
+    $bancoDados = 'decure';
 
     $conexao = mysqli_connect($servidor, $usuario, $senha, $bancoDados);
     

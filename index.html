@@ -1,67 +1,70 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Decure</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Decure - Portal da Arte e Cultura</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+        <link rel="icon" href="./images/logo.png" type="x-icon/image">
+        <link rel="stylesheet" href="index.css">
+    </head>
+
 <body>
+    <header >
+        <div id="menu1">
+            <div id="inicio" class="logo-container">
+                <a href=""><img src="./images/logo.png" alt="logotipo"></a>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Pesquisar">
+            </div>
+            <p id="nomeusuario"></p>
+            <div class="menu-items-container">
+                <a id="login" href="#"><i class="fas fa-user"></i></a>
+                <a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+        
+        <div id="menu2">
+            <nav>
+                <ul>
+                    <li><a class="opcoes" key="1" href="#">Novidades</a></li>
+                    <li><a class="opcoes" key="2" href="#">Exposições</a></li>
+                    <li><a class="opcoes" key="3" href="#">Galerias</a></li>
+                    <li><a class="opcoes" key="4" href="#">Museus</a></li>
+                    <li><a class="opcoes" key="5" href="#">Leilões</a></li>
+                    <li><a class="opcoes" key="6" href="#">Feiras</a></li>
+                    <li><a class="opcoes" key="7" href="#">Salões</a></li>
+                    <li><a class="opcoes" key="8" href="#">Editais</a></li>
+                    <li><a class="opcoes" key="9" href="#">Eventos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Menu de Navegação -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Decure</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#">Novidades</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Exposições</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Galerias</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Museus</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Leilões</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Feiras</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Salões</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Editais</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Eventos</a></li>
-        </ul>
-        <button class="btn btn-outline-primary" type="button">Login</button>
-      </div>
+    <div id="painel" class="carousel-container">
+        <div class="carousel-slide">
+            <img src="images/banner1.png" alt="Image 1">
+        </div>
+        <div class="carousel-slide">
+            <img src="images/banner2.png" alt="Image 2">
+        </div>
+        <div class="carousel-slide">
+            <img src="images/banner3.png" alt="Image 3">
+        </div>
     </div>
-  </nav>
 
-  <!-- Carousel de Imagens -->
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<main>
+    <div id="cultura">
     </div>
-    <div class="carousel-inner">
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+    
+</main>
 
-  <!-- Cards com Exposições -->
-  <div class="container my-5">
-    <h2>Exposições do momento</h2>
-    <div class="row">
-      <div id="exposicoes">
-      </div>
-    </div>
-  </div>
-
-  <footer>
+<footer>
     <div class="footer-container">
         <div class="contact-info">
             <h4>Contatos</h4>
@@ -85,8 +88,9 @@
     </div>
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 </body>
 </html>

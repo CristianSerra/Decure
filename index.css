@@ -1,0 +1,273 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+}
+
+#menu1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  color: #ED1F29;
+}
+
+.logo-container img {
+  max-width: 120px;
+  height: auto;
+}
+
+.search-container input {
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.search-container input:focus {
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+#menu2 {
+  background-color: #000;
+  padding: 20px 0;
+  text-align: center;
+}
+
+#menu2 nav {
+  display: inline-block;
+}
+
+#menu2 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu2 li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#menu2 a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#menu2 a:hover {
+  color: #ED1F29;
+  transition: 0.4s;
+}
+
+footer {
+  margin-top: auto;
+  background-color: black;
+  padding: 10px 0;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact-info,
+.location-info,
+.social-links {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.contact-info h4,
+.location-info h4,
+.social-links h4 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.contact-info p,
+.location-info p {
+  margin: 0;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #fff;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.social-links a:hover {
+  color: #ED1F29;
+  transition: 0.4s;
+}
+
+.copyright-info {
+  margin-top: 20px;
+  color: #fff;
+  background-color: #ED1F29;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  display: none;
+  width: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .carousel-slide {
+      display: inline-block;
+      width: 100%;
+  }
+}
+
+
+#cultura {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.prod-single{
+  width: 32%;
+  margin-right: 1%;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.prod-single img {
+  max-width: 100%;
+}
+
+.prod-single p {
+  text-align: center;
+  font-size: 16px;
+}
+
+.prod-single a{
+  padding: auto;
+  height: fit-content;
+  text-decoration: none;
+  color: white;
+  background-color: #ED1F29;
+  text-align: center;
+  display: block;
+  font-size: 20px;
+}
+
+.prod-single a:hover {
+  background-color:  black;
+  transition-duration: 0.4s;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 400px;
+}
+
+fieldset p a {
+  text-decoration: underline;
+  color: #ED1C24;
+}
+
+fieldset p a:hover {
+  color: black;
+}
+
+legend {
+  font-size: 1.2em;
+  color: #333;
+  font-weight: bold;
+}
+
+.cadastro {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+label {
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.botao-cadastrar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.botao-cadastrar:hover {
+  background-color: #45a049;
+}
+
+button {
+  padding: 10px;
+  border: 1px solid #ED1C24;
+  background-color: #ED1C24;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background-color: white;
+  color: #ED1C24;
+}

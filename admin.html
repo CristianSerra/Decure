@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração</title>
+    <link rel="icon" href="./images/logo.png" type="x-icon/image">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="logotipo">
+        <h1 class="caduser">Página Administrativa</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Página Principal</a></li>
+        </ul>
+    </nav>
+    
+    <h2>Lista de Produtos da Loja Virtual</h2>
+    <p id="tabela"></p>
+
+    <h2>Lista de Usuários Cadastrados</h2>
+    <p id="usuarios"></p>
+
+
+<script>
+    carregaTabela = () => {
+        let url = "carrega.php";
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.responseType='json';
+
+        xhr.onload = function() {
+            const items = xhr.response;
+            let text = "<table border='1'><tr>";
+            let campos = Object.keys(items[0]);
+            for (let cabx in campos) {
+                text += "<th>" + campos[cabx] + "</th>";
+            }
+            text +="</tr>";
+            
+            for (let x in items) {
+                text += "<tr><td>" + items[x].Codigo + "</td>";
+                text += "<td>" + items[x].Descricao + "</td>";
+                text += "<td>" + items[x].Unidade + "</td>";
+                text += "<td>" + items[x].Quantidade + "</td>";
+                text += "<td>" + items[x].PrecoVenda + "</td>";
+                text += "<td>" + items[x].Imagem + "</td></tr>";
+            }
+            text += "</table>"
+            document.getElementById("tabela").innerHTML = text;
+            carregaUsuarios();
+        };
+        xhr.send();
+    }
+
+    carregaTabela();
+
+    carregaUsuarios = () => {
+        let url = "usuarios.php";
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.responseType='json';
+
+        xhr.onload = function() {
+            const items = xhr.response;
+            let text = "<table border='1'><tr>";
+            let campos = Object.keys(items[0]);
+            for (let cabx in campos) {
+                text += "<th>" + campos[cabx] + "</th>";
+            }
+            text +="</tr>";
+            
+            for (let x in items) {
+                text += "<tr><td>" + items[x].Codigo + "</td>";
+                text += "<td>" + items[x].Nome + "</td>";
+                text += "<td>" + items[x].Email + "</td>";
+                text += "<td>" + items[x].CPF + "</td>";
+                text += "<td>" + items[x].Senha + "</td>";
+                text += "<td>" + items[x].Telefone + "</td>";
+                text += "<td>" + items[x].DTNascimento + "</td>";
+                text += "<td>" + items[x].logradouro + "</td>";
+                text += "<td>" + items[x].complemento + "</td>";
+                text += "<td>" + items[x].bairro + "</td>";
+                text += "<td>" + items[x].localidade + "</td>";
+                text += "<td>" + items[x].uf + "</td></tr>";
+            }
+            text += "</table>"
+            document.getElementById("usuarios").innerHTML = text;
+        };
+        xhr.send();
+    }
+
+</script>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="contact-info">
+            <h4>Contatos</h4>
+            <p>contato@senhordosprogramas.com.br</p>
+            <p>(11) 90000-0000</p>
+        </div>
+        <div class="location-info">
+            <h4>Localização</h4>
+            <p>Rua Pedro Rissato, 30 - Vila dos Remédios</p>
+            <p>São Paulo, SP, 06296-220</p>
+        </div>
+        <div class="social-links">
+            <h4>Redes Sociais</h4>
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+    <div class="copyright-info">
+        <p>&copy; 2023 Senhor dos Programas. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,58 +1,47 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Instituição</title>
-    <link rel="stylesheet" href="cadastro.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Cadastro de Instituição</h1>
-        <form action="cadastro.php" method="POST">
-            <div class="form-group">
-                <label for="nome">Nome da Instituição:</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-            <div class="form-group">
-                <label for="categoria">Categoria:</label>
-                <select id="categoria" name="categoria" required>
-                    <option value="Exposições">Exposições</option>
-                    <option value="Galerias">Galerias</option>
-                    <option value="Museus">Museus</option>
-                    <option value="Leilões">Leilões</option>
-                    <option value="Feiras">Feiras</option>
-                    <option value="Salões">Salões</option>
-                    <option value="Editais">Editais</option>
-                    <option value="Eventos">Eventos</option>
+    <form  autocomplete="on" action="cadusuario.php" method="post">
+
+        <fieldset>
+            <legend>Cadastro de Usuário</legend>
+            <div>
+                Nome: <input type="text" name="Nome" required><br>
+                Senha: <input type="password" name="Senha" required><br>
+                Email: <input type="email" name="Email" required><br>
+                CPF: <input type="text" name="CPF"><br>
+                Telefone: <input type="tel" name="Telefone"><br>
+                Data de Nascimento: <input type="date" name="DTNascimento"><br>
+                CEP: <input id="cep" type="text" name="CEP" required><br>
+                Logradouro: <input id="logradouro" type="text" name="logradouro"><br>
+                Número: <input type="number" name="complemento"><br>
+                Bairro: <input id="bairro" type="text" name="bairro"><br>
+                Localidade: <input id="localidade" type="text" name="localidade"><br>
+                <select style="width: 100%; height: 30px;" id="uf" name="uf" >
+                    <option value="SP">São Paulo</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="MG">Minas Gerais</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <textarea id="descricao" name="descricao" rows="4" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" required>
-            </div>
-            <div class="form-group">
-                <label for="contato">Contato:</label>
-                <input type="text" id="contato" name="contato" required>
-            </div>
-            <div class="form-group">
-                <label for="agendamento">Agendamento:</label>
-                <input type="text" id="agendamento" name="agendamento">
-            </div>
-            <div class="form-group">
-                <label for="horario">Horário:</label>
-                <input type="text" id="horario" name="horario" required>
-            </div>
-            <div class="form-group">
-                <label for="link">Link:</label>
-                <input type="url" id="link" name="link" required>
-            </div>
-            <button type="submit" class="btn-submit">Enviar</button>
-        </form>
-    </div>
-</body>
-</html>
+    
+        </fieldset>
+        <br>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <script>
+        const preencher = (endereco) => {
+            document.getElementById('logradouro').value = endereco.logradouro;
+            document.getElementById('bairro').value = endereco.bairro;
+            document.getElementById('localidade').value = endereco.localidade;
+            document.getElementById('uf').value = endereco.uf;
+        }
+
+        const pesquisarCep = async() => {
+            const valorcep = document.getElementById('cep').value;
+            const url = `http://viacep.com.br/ws/${valorcep}/json`;
+            const dados =  await fetch(url);
+            const endereco = await dados.json();
+            preencher(endereco);
+        }
+        document.getElementById('cep').addEventListener('focusout',pesquisarCep);
+
+    </script>
