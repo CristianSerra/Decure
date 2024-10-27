@@ -156,7 +156,7 @@ async function load_pag( div,url ){
     }
 }
 
-carregapainel();
+//carregapainel();
 inicializarLoja();
 
 function recarga() {

@@ -133,28 +133,6 @@ footer {
   box-sizing: border-box;
 }
 
-.carousel-container {
-  width: 100%;
-  overflow: hidden;
-}
-
-.carousel-slide {
-  display: none;
-  width: 100%;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: auto;
-}
-
-@media screen and (min-width: 768px) {
-  .carousel-slide {
-      display: inline-block;
-      width: 100%;
-  }
-}
-
 
 #cultura {
   max-width: 900px;
