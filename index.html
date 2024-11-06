@@ -14,35 +14,30 @@
 
 <body>
     <header >
-        <div id="menu1">
-            <div id="inicio" class="logo-container">
-                <a href=""><img src="./images/logo.png" alt="logotipo"></a>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Decure</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Exposições</a>
+                    <a class="nav-link" href="#">Galerias</a>
+                    <a class="nav-link" href="#">Museus</a>
+                    <a class="nav-link" href="#">Leilões</a>
+                    <a class="nav-link" href="#">Feiras</a>
+                    <a class="nav-link" href="#">Editais</a>
+                    <a class="nav-link" href="#">Eventos</a>
+                </div>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+                </form>
+              </div>
             </div>
-            <div class="search-container">
-                <input type="text" placeholder="Pesquisar">
-            </div>
-            <p id="nomeusuario"></p>
-            <div class="menu-items-container">
-                <a id="login" href="#"><i class="fas fa-user"></i></a>
-                <a href="carrinho.html"><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
-        </div>
-        
-        <div id="menu2">
-            <nav>
-                <ul>
-                    <li><a class="opcoes" key="1" href="#">Novidades</a></li>
-                    <li><a class="opcoes" key="2" href="#">Exposições</a></li>
-                    <li><a class="opcoes" key="3" href="#">Galerias</a></li>
-                    <li><a class="opcoes" key="4" href="#">Museus</a></li>
-                    <li><a class="opcoes" key="5" href="#">Leilões</a></li>
-                    <li><a class="opcoes" key="6" href="#">Feiras</a></li>
-                    <li><a class="opcoes" key="7" href="#">Salões</a></li>
-                    <li><a class="opcoes" key="8" href="#">Editais</a></li>
-                    <li><a class="opcoes" key="9" href="#">Eventos</a></li>
-                </ul>
-            </nav>
-        </div>
+        </nav>
     </header>
 
     <div id="painel" class="carousel slide" data-bs-ride="carousel">
@@ -68,9 +63,8 @@
     </div>
 
 <main>
-    <div id="cultura">
+    <div class="container" id="cultura">
     </div>
-    
 </main>
 
 <footer>

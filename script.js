@@ -7,20 +7,36 @@ inicializarLoja = () => {
         xhr.responseType='json';
         xhr.onload = function () {
             items = xhr.response;
-
             var container = document.getElementById("cultura");
+            let coluna=0;
+            let saida="";
             items.map((val)=>{
                 let categoria = val.categoria;
-                if (categoria == "1") container.innerHTML+=`
-                    <div class="prod-single">
-                        <img src="images/`+val.imagem+`" />
-                        <p>`+val.descricao+`</p>
-                        <a class="botao" key="`+val.id+`" href="#">Informações<a/>
-                    </div>
+                let corpo = `
+                <div class="col-3 card">
+                        <div class="card-body">   
+                            <a href="#">
+                                <img src="images/`+val.imagem+`" class="card-img-top">      
+                                <h5 class="card-title">`+val.Instituicao+`</h5>
+                                <p class="card-text">`+val.Titulo+`</p>
+                            </a>
+                        </div>
+                </div>
                 `;
-            });
+                let corpocab=`<div class="row">`+corpo;
 
-            var links = document.getElementsByClassName("botao");
+                if (categoria == "EX") {
+                    if (coluna==0) saida+=corpocab; else saida+=corpo;
+                    coluna++;
+                    if (coluna==3) { 
+                        saida+=`</div>`; 
+                        coluna=0; 
+                    }
+                }
+            });
+            container.innerHTML=saida;
+
+            var links = document.getElementsByClassName("prod-single");
             for (var i=0; i< links.length; i++) {
                     links[i].addEventListener("click",function() {
                         let key = this.getAttribute('key');
@@ -80,7 +96,7 @@ function filtro(chave) {
             if (categoria == chave || chave=="limpar") container.innerHTML+=`
                     <div class="prod-single">
                         <img src="images/`+val.imagem+`" />
-                        <p>`+val.descricao+`</p>
+                        <p>`+val.Titulo+`</p>
                         <a class="botao" key="`+val.id+`" href="#">Informações</a>
                     </div>
                 `;
