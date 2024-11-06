@@ -8,30 +8,21 @@ inicializarLoja = () => {
         xhr.onload = function () {
             items = xhr.response;
             var container = document.getElementById("cultura");
-            let coluna=0;
             let saida="";
             items.map((val)=>{
                 let categoria = val.categoria;
-                let corpo = `
-                <div class="col-3 card">
-                        <div class="card-body">   
-                            <a href="#">
-                                <img src="images/`+val.imagem+`" class="card-img-top">      
-                                <h5 class="card-title">`+val.Instituicao+`</h5>
-                                <p class="card-text">`+val.Titulo+`</p>
-                            </a>
-                        </div>
-                </div>
-                `;
-                let corpocab=`<div class="row">`+corpo;
-
                 if (categoria == "EX") {
-                    if (coluna==0) saida+=corpocab; else saida+=corpo;
-                    coluna++;
-                    if (coluna==3) { 
-                        saida+=`</div>`; 
-                        coluna=0; 
-                    }
+                    saida += `
+                    <div class="col card text-center h-10">
+                            <div class="card-body">   
+                                <a href="#">
+                                    <img src="images/`+val.imagem+`" class="card-img-top">      
+                                    <h5 class="card-title">`+val.Instituicao+`</h5>
+                                    <p class="card-text">`+val.Titulo+`</p>
+                                </a>
+                            </div>
+                    </div>
+                    `;                    
                 }
             });
             container.innerHTML=saida;
