@@ -7,12 +7,36 @@ inicializarLoja = () => {
         xhr.responseType='json';
         xhr.onload = function () {
             items = xhr.response;
-            var container = document.getElementById("cultura");
-            let saida="";
-            items.map((val)=>{
-                let categoria = val.categoria;
-                if (categoria == "EX") {
-                    saida += `
+            filtro("EX");
+
+            var links = document.getElementsByClassName("card");
+            for (var i=0; i< links.length; i++) {
+                    links[i].addEventListener("click",function() {
+                        let key = this.getAttribute('key');
+                        var meuModal = new bootstrap.Modal(document.getElementById('detalhes'));
+                        meuModal.show();
+                        return false;
+                    });
+            };
+            $(".nav-link").click(function() {
+                let key2 = this.getAttribute('key');
+                $("#painel").hide();
+                filtro(key2);
+            });
+        };
+        xhr.send();
+        
+        $(".navbar-brand").click(function() {
+            location.reload();
+        });
+}
+
+function filtro(chave) {
+    var container = document.getElementById("cultura");
+    let saida="";
+    items.map((val)=>{
+            let categoria = val.categoria;
+            if (categoria == chave || chave=="limpar") saida+=`
                     <div class="col card text-center h-10">
                             <div class="card-body">   
                                 <a href="#">
@@ -22,89 +46,9 @@ inicializarLoja = () => {
                                 </a>
                             </div>
                     </div>
-                    `;                    
-                }
-            });
-            container.innerHTML=saida;
-
-            var links = document.getElementsByClassName("prod-single");
-            for (var i=0; i< links.length; i++) {
-                    links[i].addEventListener("click",function() {
-                        let key = this.getAttribute('key');
-                        var qtdaux=localStorage.getItem(key);
-                        var qtd=0;
-                        if (qtdaux == null) qtd=1; else qtd=parseInt(qtdaux)+1;
-                        localStorage.setItem(key,qtd.toString());
-                        return false;
-                    });
-            };
-            $(".opcoes").click(function() {
-                let key2 = this.getAttribute('key');
-                filtro(key2);
-            });
-        };
-        xhr.send();
-        
-        $("#inicio").click(function() {
-            location.reload();
-        });
-}
-
-function carregapainel() {
-    document.addEventListener("DOMContentLoaded", function () {
-        const slides = document.querySelectorAll(".carousel-slide");
-        let currentIndex = 0;
-    
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                if (i === index) {
-                    slide.style.display = "block";
-                } else {
-                    slide.style.display = "none";
-                }
-            });
-        }
-    
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        }
-    
-        setInterval(nextSlide, 4000);
-    
-        showSlide(currentIndex);
-    });    
-}
-
-
-function filtro(chave) {
-    $("#painel").hide();
-    var container = document.getElementById("cultura");
-    container.innerHTML="";
-    items.map((val)=>{
-            let categoria = val.categoria;
-            console.log("filtro "+chave+" -categoria"+categoria);
-            if (categoria == chave || chave=="limpar") container.innerHTML+=`
-                    <div class="prod-single">
-                        <img src="images/`+val.imagem+`" />
-                        <p>`+val.Titulo+`</p>
-                        <a class="botao" key="`+val.id+`" href="#">Informações</a>
-                    </div>
                 `;
     });
-
-    var links = document.getElementsByClassName("botao");
-    for (var i=0; i< links.length; i++) {
-            links[i].addEventListener("click",function() {
-                let key = this.getAttribute('key');
-                var qtdaux=localStorage.getItem(key);
-                var qtd=0;
-                if (qtdaux == null) qtd=1; else qtd=parseInt(qtdaux)+1;
-                localStorage.setItem(key,qtd.toString());
-                return false;
-            });
-    };
-
+    container.innerHTML=saida;
 }
 
 function loga() {
@@ -163,7 +107,6 @@ async function load_pag( div,url ){
     }
 }
 
-//carregapainel();
 inicializarLoja();
 
 function recarga() {
