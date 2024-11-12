@@ -1,9 +1,13 @@
 <?php
-$servidor = 'localhost';
-$usuario = 'FATEC';
-$senha = 'Fat2023!';
-$bancoDados = 'decure';
-$conexao = mysqli_connect($servidor, $usuario, $senha, $bancoDados);
+
+$host = 'localhost'; // Host do MySQL
+$dbname = 'decure'; // Nome do banco de dados
+$username = 'FATEC'; // Nome de usuário do MySQL
+$password = 'Fat2023!'; // Senha do MySQL
+
+$conexao = mysqli_connect($host, $username, $password, $dbname);
+$conexao->set_charset("utf8");
+
 
 if ( $conexao->connect_errno ) {
     echo "Problemas para conectar";
