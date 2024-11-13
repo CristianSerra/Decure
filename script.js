@@ -8,16 +8,6 @@ inicializarLoja = () => {
         xhr.onload = function () {
             items = xhr.response;
             filtro("EX");
-
-            var links = document.getElementsByClassName("card");
-            for (var i=0; i< links.length; i++) {
-                    links[i].addEventListener("click",function() {
-                        let key = this.getAttribute('key');
-                        var meuModal = new bootstrap.Modal(document.getElementById('detalhes'));
-                        meuModal.show();
-                        return false;
-                    });
-            };
             $(".nav-link").click(function() {
                 let key2 = this.getAttribute('key');
                 $("#painel").hide();
@@ -37,7 +27,7 @@ function filtro(chave) {
     items.map((val)=>{
             let categoria = val.categoria;
             if (categoria == chave || chave=="limpar") saida+=`
-                    <div class="col card text-center h-10">
+                    <div class="col card text-center h-10" key="`+val.id+`">
                             <div class="card-body">   
                                 <a href="#">
                                     <img src="images/`+val.imagem+`" class="card-img-top">      
@@ -49,6 +39,39 @@ function filtro(chave) {
                 `;
     });
     container.innerHTML=saida;
+    var links = document.getElementsByClassName("card");
+    container = document.getElementById("detalhes");
+    for (var i=0; i< links.length; i++) {
+            links[i].addEventListener("click",function() {
+                let idcard = this.getAttribute('key');
+                carddetalhe=`
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">`+items[idcard-1].Titulo+`</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>`+items[idcard-1].descricao+`</p>
+                                <p><b>Site: </b>`+items[idcard-1].link+`</p>
+                                <p><b>Instagram: </b>`+items[idcard-1].Instagram+`</p>
+                                <p><b>Endereço: </b>`+items[idcard-1].Endereco+`</p>
+                                <p><b>Contato: </b>`+items[idcard-1].Contato+`</p>
+                                <p><b>Agendamento: </b>`+items[idcard-1].Agendamento+`</p>
+                                <p><b>Horário: </b>`+items[idcard-1].Horario+`</p>
+                                <p><b>Data Publicação: </b>`+items[idcard-1].DataPub+`</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>`;
+                container.innerHTML=carddetalhe;
+                var meuModal = new bootstrap.Modal(document.getElementById('detalhes'));
+                meuModal.show();
+                return false;
+            });
+    };
 }
 
 function loga() {
