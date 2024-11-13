@@ -62,7 +62,7 @@ function filtro(chave) {
                                 <p><b>Data Publicação: </b>`+items[idcard-1].DataPub+`</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-target="detalhes">Close</button>
                             </div>
                         </div>
                     </div>`;
