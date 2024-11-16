@@ -29,7 +29,7 @@ function filtro(chave) {
             if (categoria == chave || chave=="limpar") saida+=`
                     <div class="col card text-center h-10" key="`+val.id+`">
                             <div class="card-body">   
-                                <a href="#">
+                                <a href="#" style="text-decoration: none; color: black;">
                                     <img src="images/`+val.imagem+`" class="card-img-top">      
                                     <h5 class="card-title">`+val.Instituicao+`</h5>
                                     <p class="card-text">`+val.Titulo+`</p>
@@ -44,6 +44,7 @@ function filtro(chave) {
     for (var i=0; i< links.length; i++) {
             links[i].addEventListener("click",function() {
                 let idcard = this.getAttribute('key');
+                let insta = items[idcard-1].Instagram.substr(1);
                 carddetalhe=`
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -53,8 +54,8 @@ function filtro(chave) {
                             </div>
                             <div class="modal-body">
                                 <p>`+items[idcard-1].descricao+`</p>
-                                <p><b>Site: </b>`+items[idcard-1].link+`</p>
-                                <p><b>Instagram: </b>`+items[idcard-1].Instagram+`</p>
+                                <p><b>Site: </b><a href="`+items[idcard-1].link+`" target="_blank">`+items[idcard-1].link+`</a></p>
+                                <p><b>Instagram: </b><a href="https://instagram.com/`+insta+`" class="card-link" target="_blank">`+items[idcard-1].Instagram+`</a></p>
                                 <p><b>Endereço: </b>`+items[idcard-1].Endereco+`</p>
                                 <p><b>Contato: </b>`+items[idcard-1].Contato+`</p>
                                 <p><b>Agendamento: </b>`+items[idcard-1].Agendamento+`</p>
