@@ -4,6 +4,7 @@ $usuario = 'FATEC';
 $senha = 'Fat2023!';
 $bancoDados = 'decure';
 $conexao = mysqli_connect($servidor, $usuario, $senha, $bancoDados);
+$conexao->set_charset("utf8");
 
 if ( $conexao->connect_errno ) {
     echo "Problemas para conectar";
