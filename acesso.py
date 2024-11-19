@@ -77,7 +77,11 @@ class InstagramBot:
         tempo(5)
 
 #conexao()
-Bot = InstagramBot('cristais_serra', 'Vela!hot5')
+f = open("C:\\Users\\Administrador\\Documents\\site\\Decure\\cred.txt")
+usuario = f.readline()
+senha = f.readline()
+print(usuario)
+Bot = InstagramBot(usuario,senha)
 Bot.login()
 Bot.pegaposts()
 Bot.entralink(posts[0])
