@@ -10,8 +10,8 @@ inicializarLoja = () => {
             filtro("EX");
             $(".nav-link").click(function() {
                 let key2 = this.getAttribute('key');
-                $("#painel").hide();
                 filtro(key2);
+                $("#painel").hide();
             });
         };
         xhr.send();

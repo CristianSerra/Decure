@@ -20,13 +20,8 @@ def tempo(qtoespera):
     sleep(espera)
 
 def conexao():
-    dados = {
-        'imagem':'image4.png',
-        'descricao':'teste de coleta',
-        'link':'aqui e o robot.html'
-    }
     try:
-        response = requests.post("http://localhost/decure/midia-filtro.php", data=dados)
+        response = requests.post("http://localhost/decure/midia.php", data=dados)
         if response.status_code == 200:
             print("resposta do servidor ", response.text)
         else:
@@ -58,7 +53,7 @@ class InstagramBot:
         senha.send_keys(self.password)
         tempo(2)
         senha.send_keys(Keys.RETURN)
-        tempo(7)
+        tempo(8)
 
     def entralink(self, url):
         self.driver.get(url)
@@ -68,21 +63,33 @@ class InstagramBot:
 
     def pegaposts(self):    
         navega = self.driver
-        navega.get('https://www.instagram.com/mis_sp/')
+        navega.get('https://www.instagram.com/masp/')
         tempo(7)
         elementos = navega.find_elements(By.TAG_NAME, 'a')
         for postagem in elementos:
             post_link = postagem.get_attribute("href")
-            if "instagram.com/mis_sp/p" in post_link:
+            if "instagram.com/masp/p" in post_link:
                 posts.append(post_link)
 
-#conexao()
 
-Bot = InstagramBot()
-Bot.login()
-Bot.pegaposts()
-Bot.entralink(posts[0])
-tempo(100)
 
+#Bot = InstagramBot()
+#Bot.login()
+#Bot.pegaposts()
+#Bot.entralink(posts[0])
+#tempo(10)
+
+dados = { 'imagem':'image4.png',
+        'descricao':'teste de coleta',
+        'link':'aqui e o robot.html',
+        'imagem':'image4.png' }
+
+saida = "{'imagem':'image4.png',"
+saida += "'descricao':'teste de coleta',"
+saida += "'link':'aqui e o robot.html',"
+saida += "'imagem':'image4.png'}"
+
+#dados.append(saida)
+conexao()
 
 
