@@ -2,6 +2,7 @@ import json
 import random
 import requests
 import re
+import urllib.request
 
 from time import sleep
 from selenium import webdriver
@@ -14,6 +15,7 @@ posts = []
 imagens = []
 elementos = []
 dados = []
+descricao=""
 
 def tempo(qtoespera):
     espera=random.randrange(qtoespera-1, qtoespera+2)
@@ -58,8 +60,12 @@ class InstagramBot:
     def entralink(self, url):
         self.driver.get(url)
         tempo(6)
-        descricao = self.driver.find_element(By.XPATH,'/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div[2]/div[1]/article/div/div[2]/div/div[2]/div[1]/ul/div[1]/li/div/div/div[2]/div[1]/h1')        
-        print (descricao.text)
+        global descricao
+        elemdesc = self.driver.find_element(By.XPATH,'/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div[2]/div[1]/article/div/div[2]/div/div[2]/div[1]/ul/div[1]/li/div/div/div[2]/div[1]/h1')        
+        descricao = elemdesc.text
+        elemimagem = self.driver.find_element(By.XPATH,'/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div[2]/div[1]/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div/div[1]/img')
+        imagem = elemimagem.get_attribute("src")
+        urllib.request.urlretrieve(imagem,"images/masp01.jpg")
 
     def pegaposts(self):    
         navega = self.driver
@@ -71,25 +77,19 @@ class InstagramBot:
             if "instagram.com/masp/p" in post_link:
                 posts.append(post_link)
 
+Bot = InstagramBot()
+Bot.login()
+Bot.pegaposts()
+Bot.entralink(posts[0])
 
+dados = { 'imagem':'masp01.jpg',
+        'descricao':None,
+        'endereco':'av paulista, 2554',
+        'contato':'joao',
+        'agendamento':'falar com severino',
+        'link':'aqui e o robot.html' }
 
-#Bot = InstagramBot()
-#Bot.login()
-#Bot.pegaposts()
-#Bot.entralink(posts[0])
-#tempo(10)
-
-dados = { 'imagem':'image4.png',
-        'descricao':'teste de coleta',
-        'link':'aqui e o robot.html',
-        'imagem':'image4.png' }
-
-saida = "{'imagem':'image4.png',"
-saida += "'descricao':'teste de coleta',"
-saida += "'link':'aqui e o robot.html',"
-saida += "'imagem':'image4.png'}"
-
-#dados.append(saida)
+dados['descricao']=descricao
+print (dados)
 conexao()
-
-
+tempo(100)

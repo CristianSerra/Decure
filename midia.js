@@ -34,7 +34,7 @@ function carregamento() {
             container.innerHTML+=`
             <tr>
                 <td><input type="checkbox" name="controle[]" value="`+conta+`"></td>
-                <td><img src='imagens/`+val.imagem+`' alt='Imagem'>
+                <td><img src='images/`+val.imagem+`' alt='Imagem'>
                 <input type="text" name="imagem[]" value="`+val.imagem+`"></td>
                 <td><textarea name="descricao[]" rows="4">`+val.descricao+`</textarea></td>
                 <td><textarea name="endereco[]" rows="4">`+val.endereco+`</textarea></td>
