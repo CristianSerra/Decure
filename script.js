@@ -133,11 +133,8 @@ async function load_pag( div,url ){
     }
 }
 
-inicializarLoja();
-
 function cadastro() {
     load_pag("painel","cadastro.html");
-
 }
 
 function pesquisar() {
@@ -146,5 +143,28 @@ function pesquisar() {
     $("#painel").hide();
 }
 
+inicializarLoja();
 
+function recarga() {
+    var userlogado = localStorage.getItem("usuario");
+    if (userlogado==null) {
+        document.getElementById("nomeusuario").innerText="";
+    }
+    else {
+        document.getElementById("nomeusuario").innerText=userlogado;
+    }
+}
+window.onload = recarga();
+window.addEventListener("focus", recarga);
+
+document.getElementById("login").addEventListener("click",function() {
+    var userlogado = localStorage.getItem("usuario");
+    if (userlogado==null) {
+        load_pag("painel","logar.html");
+    }
+    else {
+        localStorage.clear();
+        recarga();
+    }
+});
     
