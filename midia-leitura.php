@@ -3,6 +3,12 @@ $servidor = 'localhost';
 $usuario = 'FATEC';
 $senha = 'Fat2023!';
 $bancoDados = 'decure';
+
+//$host = "artmap.mysql.dbaas.com.br";
+//$username = "artmap";
+//$password = "V@xd3v44#Fgdb";
+//$dbname = "artmap";
+
 $conexao = mysqli_connect($servidor, $usuario, $senha, $bancoDados);
 $conexao->set_charset("utf8");
 
