@@ -26,7 +26,9 @@ function filtro(chave) {
     let saida="";
     items.map((val)=>{
             let categoria = val.categoria;
-            if (categoria == chave || chave=="limpar") saida+=`
+            let titulo = val.Titulo;
+            let instituicao = val.Instituicao;
+            if (categoria == chave || chave=="limpar" || titulo.search(chave) != -1 || instituicao.search(chave)!=-1) saida+=`
                     <div class="col card text-center h-10" key="`+val.id+`">
                             <div class="card-body">   
                                 <a href="#" style="text-decoration: none; color: black;">
@@ -133,36 +135,16 @@ async function load_pag( div,url ){
 
 inicializarLoja();
 
-function recarga() {
-    var userlogado = localStorage.getItem("usuario");
-    if (userlogado==null) {
-        document.getElementById("nomeusuario").innerText="";
-    }
-    else {
-        document.getElementById("nomeusuario").innerText="Usuario: "+userlogado;
-    }
-}
-window.onload = recarga();
-window.addEventListener("focus", recarga);
-
-document.getElementById("login").addEventListener("click",function() {
-    var userlogado = localStorage.getItem("usuario");
-    if (userlogado==null) {
-        load_pag("painel","logar.html");
-    }
-    else {
-        localStorage.clear();
-        recarga();
-    }
-});
-
 function cadastro() {
     load_pag("painel","cadastro.html");
 
 }
 
-const pesquisa = document.querySelector("input");
-
-pesquisa.addEventListener("input", function() {
+function pesquisar() {
+    const pesquisa = document.getElementById("pesquisa");
     filtro(pesquisa.value);
-});
+    $("#painel").hide();
+}
+
+
+    
