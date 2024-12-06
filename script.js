@@ -80,20 +80,37 @@ function filtro(chave) {
 function loga() {
     var auxemail = document.getElementById("Email").value;
     var auxsenha = document.getElementById("Senha").value;
-    let url = "login.php/"+auxemail;
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    xhr.onload = function () {
-        senha = xhr.response;
+
+    $.post("login.php", {
+        Email : auxemail
+    }, function(result){
+        senha=result;
         if (senha==auxsenha) {
             localStorage.setItem("usuario",auxemail);
             location.reload();
         }
         else {
-            document.getElementById("erro").innerHTML="credencial inválida. Tente novamente..."
+            $("#erro").html("credencial inválida. Tente novamente...");
         }
-    };
-    xhr.send();
+    })
+}
+
+function cadastra() {
+    $.post("cadusuario.php", {
+        nome : document.getElementsByName("Nome").value,
+        senha : document.getElementsByName("Senha").value,
+        email : document.getElementsByName("Email").value,
+        cpf : document.getElementsByName("CPF").value,
+        telefone : document.getElementsByName("Telefone").value,
+        dtNascimento : document.getElementsByName("DTNascimento").value,
+        cep : document.getElementsByName("CEP").value,
+        logradouro : document.getElementsByName("logradouro").value,
+        complemento : document.getElementsByName("complemento").value,
+        bairro : document.getElementsByName("bairro").value,
+        localidade : document.getElementsByName("localidade").value
+    }, function(result){
+        location.reload();
+    })
 }
 
 async function load_pag( div,url ){
@@ -133,7 +150,7 @@ async function load_pag( div,url ){
     }
 }
 
-function cadastro() {
+function pagcadastro() {
     load_pag("painel","cadastro.html");
 }
 

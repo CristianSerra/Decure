@@ -80,6 +80,10 @@ legend {
   font-weight: bold;
 }
 
+#login, #pesq-campo {
+  padding-left: 50px;
+}
+
 .cadastro {
   display: flex;
   flex-direction: column;

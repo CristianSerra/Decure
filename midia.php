@@ -1,13 +1,5 @@
 <?php
-    $host = 'localhost';
-    $usuario = 'FATEC';
-    $senha = 'Fat2023!';
-    $bcodados = 'decure';
-    
-    //$host = "artmap.mysql.dbaas.com.br";
-    //$username = "artmap";
-    //$password = "V@xd3v44#Fgdb";
-    //$dbname = "artmap";
+include 'credencial.php';
 
     // Conexão com o banco de dados
     try {
