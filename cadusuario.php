@@ -29,7 +29,7 @@ include 'credencial.php';
 
         // Vincular os parâmetros
         $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':email', $categoria);
+        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':cpf', $cpf);
         $stmt->bindParam(':usersenha', $usersenha);
         $stmt->bindParam(':telefone', $telefone);

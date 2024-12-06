@@ -1,14 +1,14 @@
         <fieldset>
             <legend>Cadastro de Usuário</legend>
-            Nome: <input type="text" name="Nome" required><br>
-            Senha: <input type="password" name="Senha" required><br>
-            Email: <input type="email" name="Email" required><br>
-            CPF: <input type="text" name="CPF"><br>
-            Telefone: <input type="tel" name="Telefone"><br>
-            Data de Nascimento: <input type="date" name="DTNascimento"><br>
+            Nome: <input id="Nome" type="text" name="Nome" required><br>
+            Senha: <input id="Senha" type="password" name="Senha" required><br>
+            Email: <input id="Email" type="email" name="Email" required><br>
+            CPF: <input id="CPF" type="text" name="CPF"><br>
+            Telefone: <input id="Telefone" type="tel" name="Telefone"><br>
+            Data de Nascimento: <input id="DTNascimento" type="date" name="DTNascimento"><br>
             CEP: <input id="cep" type="text" name="CEP" required><br>
             Logradouro: <input id="logradouro" type="text" name="logradouro"><br>
-            Número: <input type="number" name="complemento"><br>
+            Número: <input id="complemento" type="number" name="complemento"><br>
             Bairro: <input id="bairro" type="text" name="bairro"><br>
             Localidade: <input id="localidade" type="text" name="localidade"><br>
             <select style="width: 100%; height: 30px;" id="uf" name="uf" >
@@ -17,7 +17,7 @@
                 <option value="ES">Espírito Santo</option>
                 <option value="MG">Minas Gerais</option>
             </select>
-            <br>
+            <br><br>
             <button onclick="cadastra()">Cadastrar</button>
             <button onclick="location.reload()">Cancelar</button>        
         </fieldset>

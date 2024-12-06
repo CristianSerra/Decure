@@ -92,25 +92,26 @@ function loga() {
         else {
             $("#erro").html("credencial inválida. Tente novamente...");
         }
-    })
+    });
 }
 
 function cadastra() {
     $.post("cadusuario.php", {
-        nome : document.getElementsByName("Nome").value,
-        senha : document.getElementsByName("Senha").value,
-        email : document.getElementsByName("Email").value,
-        cpf : document.getElementsByName("CPF").value,
-        telefone : document.getElementsByName("Telefone").value,
-        dtNascimento : document.getElementsByName("DTNascimento").value,
-        cep : document.getElementsByName("CEP").value,
-        logradouro : document.getElementsByName("logradouro").value,
-        complemento : document.getElementsByName("complemento").value,
-        bairro : document.getElementsByName("bairro").value,
-        localidade : document.getElementsByName("localidade").value
-    }, function(result){
+        Nome: document.getElementById("Nome").value,
+        Senha: document.getElementById("Senha").value,
+        Email: document.getElementById("Email").value,
+        CPF: document.getElementById("CPF").value,
+        Telefone: document.getElementById("Telefone").value,
+        DTNascimento: document.getElementById("DTNascimento").value,
+        CEP: document.getElementById("cep").value,
+        logradouro: document.getElementById("logradouro").value,
+        complemento: document.getElementById("complemento").value,
+        bairro: document.getElementById("bairro").value,
+        localidade: document.getElementById("localidade").value,
+        uf: document.getElementById("uf").value
+    }, function(result,status){
         location.reload();
-    })
+    });
 }
 
 async function load_pag( div,url ){
