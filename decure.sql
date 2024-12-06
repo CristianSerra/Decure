@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07/11/2024 às 22:25
+-- Tempo de geração: 07-Dez-2024 às 00:12
 -- Versão do servidor: 10.4.22-MariaDB
--- Versão do PHP: 8.1.2
+-- versão do PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,9 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `filtro`
+-- Estrutura da tabela `filtro`
 --
 
+DROP TABLE IF EXISTS `filtro`;
 CREATE TABLE `filtro` (
   `id` int(11) NOT NULL,
   `imagem` varchar(150) NOT NULL,
@@ -37,12 +38,20 @@ CREATE TABLE `filtro` (
   `link` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `filtro`
+--
+
+INSERT INTO `filtro` (`id`, `imagem`, `descricao`, `endereco`, `contato`, `agendamento`, `link`) VALUES
+(2, 'images/casatriangulo0.jpg', 'Eduardo Berliner . Art Basel Miami Beach 2024 . Casa Triângulo . Booth H29 . Miami Beach Convention Center, Miami Beach . 04.12.2024 - 08.12.2024\r\n\r\nE', 'av paulista,1020', 'Orlando', 'aos sabados', 'fjjjj');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `homepage`
+-- Estrutura da tabela `homepage`
 --
 
+DROP TABLE IF EXISTS `homepage`;
 CREATE TABLE `homepage` (
   `id` int(11) NOT NULL,
   `Titulo` varchar(150) NOT NULL,
@@ -63,7 +72,7 @@ CREATE TABLE `homepage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `homepage`
+-- Extraindo dados da tabela `homepage`
 --
 
 INSERT INTO `homepage` (`id`, `Titulo`, `Instituicao`, `imagem`, `descricao`, `link`, `LinkPost`, `Instagram`, `Endereco`, `Contato`, `Agendamento`, `Horario`, `DataPub`, `DataFim`, `TAGS`, `categoria`) VALUES
@@ -73,7 +82,7 @@ INSERT INTO `homepage` (`id`, `Titulo`, `Instituicao`, `imagem`, `descricao`, `l
 (4, 'Últimas semanas para visitar a exposição ‘Catherine Opie: o gênero do retrato’', 'MASP - Museu de Arte de São Paulo', 'catherine.png', 'Últimas semanas para visitar a exposição ‘Catherine Opie: o gênero do retrato’\n\nA mostra apresenta 66 fotografias realizadas entre 1987 e 2022. O subtítulo da exposição alude aos diferentes significados em português da palavra gênero, em oposição ao inglês ‘gender/genre’.\n\nPor um lado, o gênero [genre em inglês] é o tipo, a espécie, a forma, a classe, a categoria, o estilo; no campo das artes visuais, podemos falar em diferentes gêneros na pintura: o retrato, a paisagem, a natureza morta.\n\nPor outro lado, o gênero [gender em inglês] é também a diferença socialmente construída entre homens e mulheres ou aqueles que se identificam de outros modos, e pode abarcar diversas identidades, sejam elas transgêneras, não-binárias ou cisgêneras. Opie se apropria do gênero tradicional do retrato, associado normalmente às elites, para dar visibilidade e força a sua própria comunidade.\n\n‘Catherine Opie: o gênero do retrato’, em cartaz de 5.7 a 27.10.2024, é curada por Adriano Pedrosa, diretor artístico, e Guilherme Giufrida, curador assistente.', 'https://www.masp.org.br/', 'https://www.instagram.com/p/DBT3P5yTkUE/?img_index=1', '@masp', 'Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200', 'https://www.masp.org.br/sobre/fale-conosco', 'http://masp.org.br/ingressos', 'TERÇA: 10H – 20H (ENTRADA ATÉ AS 19H)\nQUARTA – DOMINGO: 10H – 18H (ENTRADA ATÉ AS 17H)\nSEGUNDA: FECHADO', '2024-10-19', '2024-10-27', 'Fotografia,Retrato,Identidade de gênero,Catherine Opie,Adriano Pedrosa,Guilherme Giufrida,Pintura de retrato,LGBTQIA+', 'EX'),
 (5, 'Conversa com Vânia Mignone e Lilia Schwarcz', 'Casa Triângulo', 'vania.jpg', 'Conversa com Vânia Mignone e Lilia Schwarcz . Sábado 19.10.2024 às 12h.\n\nVânia Mignone: A Esperança Equilibrista . Exposição individual . Ensaio crítico de Lilia Schwarcz . 21.09.2024 - 01.11.2024 .', 'https://www.casatriangulo.com/pt/', 'https://www.instagram.com/p/DBRR4t9RS3J/', '@casatriangulo', 'Rua Estados Unidos 1324 - CEP 01427-001 - São Paulo', 'T: +55 11 3167-5621 / INFO@CASATRIANGULO.COM', '', '\n\nDE SEGUNDA A SEXTA / DAS 10H ÀS 19H / SÁBADO / DAS 10H ÀS 17H', '2024-10-18', '2024-11-01', 'Vânia Mignone,Lilia Schwarcz,Exposição individual,A Esperança Equilibrista,Conversa sobre arte', 'EX'),
 (6, '‘Mucki Botkay: janelas imaginárias’ segue aberta para visitação até 16 de janeiro na Galatea Salvador.', 'Galatea', 'galatea.jpg', '‘Mucki Botkay: janelas imaginárias’ segue aberta para visitação até 16 de janeiro na Galatea Salvador.\n\nA artista carioca Mucki Botkay apresenta pela primeira vez as suas pinturas com miçangas em uma grande exposição individual. As obras exploram formas e cores presentes em diversos ecossistemas dentro da Mata Atlântica, como manguezais, lagunas e restingas. Criando composições que por vezes remetem a mestres da tapeçaria como Genaro de Carvalho e Roberto Burle Marx, Mucki não só reencena a natureza, como também estica a figuração de modo a flertar com abstração.\n\nA exposição conta com texto crítico assinado por Leonel Kaz, curador que tem acompanhado a produção da artista nos últimos anos.', 'https://galatea.art/', 'https://www.instagram.com/p/DBR6GY9PN7M/?img_index=1', '@galatea.art_', 'Galatea São Paulo\nR. Oscar Freire, 379 – Lj. 1 \n01426-900 | Jardins\n\nRua Padre João Manuel, 808\n01411-0001 | Jardins\n\nGALATEA salvador\nR. Chile, 22\n40026-032 ', 'Galatea São Paulo\n\ncontato@galatea.art\n\n+ 55 11  3475 0099\n\nGalatea Salvador\n\nsalvador@galatea.art\n\n+ 55 71  35110046', 'Não necessário', 'GALATEA são paulo\n\nR. Oscar Freire, 379\nHorário de funcionamento:\n\nterça – quinta | 10 às 19h\n\nsexta | 10 às 18h\n\nSábado | 11h às 17h\n\n–\n \nRua Padre João Manuel, 808\nHorário de funcionamento:\n\nsegunda – quinta | 10 às 19h\n\nsexta | 10 às 18h\n\nSábado | 11h às 17h\n\n\nGALATEA salvador\nR. Chile, 22\n\nHorário de funcionamento:\n\nterça – quinta | 10 às 19h\n\nsexta | 10 às 18h\n\nSábado | 11h às 15h', '0000-00-00', '2025-01-16', 'Mucki Botkay,Abstração,Arte Têxtil,Mata Atlântica,Figuração', 'EX'),
-(7, 'Vem aí: 15ª Bienal Internacional de Arte Contemporânea de Curitiba. ', 'Bienal Internacional de Arte Contemporânea de Curitiba', '', 'Vem aí: 15ª Bienal Internacional de Arte Contemporânea de Curitiba. \n\nEm breve, mais informações', 'https://www.bienaldecuritiba.com.br/', 'https://www.instagram.com/p/C2fDpGCMdhR/?hl=en', '@bienaldecuritiba', 'Curitiba, Paraná', '', '', '', '2024-01-24', '0000-00-00', 'Arte Contemporânea, Bienal, Curitiba, Paraná, Internacional', 'EV'),
+(7, 'Vem aí: 15ª Bienal Internacional de Arte Contemporânea de Curitiba. ', 'Bienal Internacional de Arte Contemporânea de Curitiba', '15bienal.jpg', 'Vem aí: 15ª Bienal Internacional de Arte Contemporânea de Curitiba. \n\nEm breve, mais informações', 'https://www.bienaldecuritiba.com.br/', 'https://www.instagram.com/p/C2fDpGCMdhR/?hl=en', '@bienaldecuritiba', 'Curitiba, Paraná', '', '', '', '2024-01-24', '0000-00-00', 'Arte Contemporânea, Bienal, Curitiba, Paraná, Internacional', 'EV'),
 (8, 'O QUE É O ART OF LOVE?', 'iArremate', 'loveart.jpg', 'O QUE É O ART OF LOVE?\n\nO Art of Love é uma das maiores exposições de arte ao ar livre do Brasil. São dezenas de esculturas de corações, pintadas por talentosos artistas e expostos em locais icônicos da cidade sede.\n\nA primeira edição na capital paulista ocorreu em 2021, onde os corações retratam histórias reais de amor e afeto vividas na pandemia.\n\nDessa vez os corações voltam à São Paulo para pulsar o amor pela própria cidade. Nesta jornada única, artistas transformam corações em obras de arte, celebrando a diversidade e a essência vibrante de São Paulo. A exposição une a paixão pela arte à missão de promover impacto social e humanitário.\n\nAo final da mostra, todas as obras serão leiloadas e o valor arrecadado destinado a ONG Gerando Falcões.\n\nParticipe do leilão que acontece no iArremate no dia 15 de outubro, às 21:30h.\n\n#artoflove #gerandofalcoes #arte #leilãobeneficente', 'https://www.iarremate.com/', 'https://www.instagram.com/p/DA_5BQLv22V/', '@iarremate.oficial', 'R. Heitor Modesto, 28 - Estação São Lourenço - MG\nCEP: 37470-000 ', 'E-mail:\nsac@iarremate.com ', 'E-mail:\nsac@iarremate.com ', 'Horário de funcionamento:\ndas 12h30 às 17h30, das 19h às 22h e plantão durante os leilões.', '0000-00-00', '2024-10-15', 'Exposição ao ar livre, Esculturas, Arte e impacto social, Leilão beneficente, ONG Gerando Falcões', 'EX'),
 (9, 'Leilão de Arte', 'Errol Flynn Galeria de Arte', 'errol.jpg', 'Solicite seu catálogo digital completo por WhatsApp (31) 9.9889-5445 ou 9.9889-1515. \n\nUm conjunto espetacular de obras do artista Lorenzato pode ser apreciado na exposição até domingo, de 10 às 20 hs. As obras serão leiloadas na segunda-feira (19) e terça-feira (20), às 19:30 hs.\n\nOUTROS DESTAQUES: \n\nGuignard, Di Cavalcanti, Burle Marx, Maria Leontina, Milton Dacosta, Yara Tupynambá, Marcos Coelho Benjamim, Lucchesi, Amílcar de Castro, Poteiro,Mabe, Rubem Valentim, Teruz, Siron Franco, Lorenzato, Aldemir Martins e outros artistas brasileiros consagrados.\n\nEnviamos as obras arrematadas para qualquer local do Brasil. \n\n#leilaodearte #mercadodearte\n#coleçãodearte #artebrasileira #mercadodearte\n#pinturabrasileira #artecontemporanea #leilaodearte\n#esculturabrasileira #lorenzato', 'https://errol.com.br/', 'https://www.instagram.com/p/C-tQ_2GvK9o/?img_index=1', '@errolflynngaleria', 'Rua Curitiba\nNº 1862\nBairro Lourdes\n\nBelo Horizonte / MG\nCEP: 30.170-127', 'Telefone:\n\n(31) 3318.3830\n\nWhatsApp:  \n\n(31) 9 9889-1515\n(31) 9 9889-5445\n\ncontato@errol.com.br', '', 'SEG-SEX\n09:00 – 18:00\n\nSÁBADOS\n9:00 – 14:00', '0000-00-00', '0000-00-00', '#leilaodearte #mercadodearte\n#coleçãodearte #artebrasileira #mercadodearte\n#pinturabrasileira #artecontemporanea #leilaodearte\n#esculturabrasileira #lorenzato', 'EX'),
 (10, 'Leilão da TNT Arte dia 15 de agosto às 19h.', 'TNT Arte', 'tnt.jpg', 'Leilão HOJE \n\nLote 63\nSergio Camargo \nEstudo\nEscultura de mármore\nAss. e datado 1985\nEx. coleção Layse Bittencourt\n11 x 10 x 10 cm\n\nConsiderado um dos mais originais artistas brasileiros ligados à vertente construtiva, Serfio Camargo destaca-se por explorar os limites da forma ao realizar cortes audaciosos nos materiais, em um procedimento por ele denominado “geometria empírica”.\n\nNum período em que se acredita no esgotamento da inovação e no qual se defende a superação do legado moderno, Sérgio Camargo inaugura uma trajetória em que a relação conflituosa, mas sempre atenta, com uma tradição preexistente gera uma produção inovadora e singular.\n\nLeilão da TNT Arte dia 15 de agosto às 19h. \nwww.tntarte.com.br\n\nConfira o Catálogo:  www.tntarte.com.br\n\nParticipação online e por telefone ☎️\n\n#leilaodearte #leilaodedesign #artauction #design #thaisalexandreleiloeira', 'https://www.tntarte.com.br/', 'https://www.instagram.com/p/C-rvBIaMixe/?img_index=1', '@tntarte', 'Estrada da Gávea, 899, loja 243 (Fashion Mall)\nSão Conrado, Rio de Janeiro - RJ\nCEP: 22610-001 ', '21 2495-6142\n21 99464-0374\n21 99398-0022\n21 99464-0374\n\ncontato@tntarte.com.br ', '', 'Seg\na Sábado, de 10 às 20h\nDomingo e feriados, das 14 às 20h', '0000-00-00', '0000-00-00', '#leilaodearte #leilaodedesign #artauction #design #thaisalexandreleiloeira #escultura #sergiocamargo', 'LE'),
@@ -93,9 +102,10 @@ INSERT INTO `homepage` (`id`, `Titulo`, `Instituicao`, `imagem`, `descricao`, `l
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `instituicoes`
+-- Estrutura da tabela `instituicoes`
 --
 
+DROP TABLE IF EXISTS `instituicoes`;
 CREATE TABLE `instituicoes` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
@@ -109,7 +119,7 @@ CREATE TABLE `instituicoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `instituicoes`
+-- Extraindo dados da tabela `instituicoes`
 --
 
 INSERT INTO `instituicoes` (`id`, `nome`, `categoria`, `descricao`, `endereco`, `contato`, `agendamento`, `horario`, `link`) VALUES
@@ -119,33 +129,30 @@ INSERT INTO `instituicoes` (`id`, `nome`, `categoria`, `descricao`, `endereco`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `midias`
+-- Estrutura da tabela `midias`
 --
 
+DROP TABLE IF EXISTS `midias`;
 CREATE TABLE `midias` (
   `id` int(11) NOT NULL,
   `imagem` varchar(200) NOT NULL,
-  `descricao` varchar(200) NOT NULL,
-  `endereco` varchar(200) NOT NULL,
-  `contato` varchar(200) NOT NULL,
-  `agendamento` varchar(200) NOT NULL,
-  `link` varchar(200) NOT NULL
+  `descricao` varchar(600) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `midias`
+-- Extraindo dados da tabela `midias`
 --
 
-INSERT INTO `midias` (`id`, `imagem`, `descricao`, `endereco`, `contato`, `agendamento`, `link`) VALUES
-(1, 'image1.png', 'teste MIS', 'Av. Europa, 158', '(11) 2117-4777', '', 'https://mis-sp.org.br/'),
-(2, 'image2.png', 'Museu Lingua Portuguesa', 'Praça da Luz, s/nº - Centro Histórico de São Paulo', '', '', 'https://www.museudalinguaportuguesa.org.br/');
+INSERT INTO `midias` (`id`, `imagem`, `descricao`) VALUES
+(1, 'images/casatriangulo0.jpg', 'Eduardo Berliner . Art Basel Miami Beach 2024 . Casa Triângulo . Booth H29 . Miami Beach Convention Center, Miami Beach . 04.12.2024 - 08.12.2024\n\nEduardo Berliner . Ovos 2024 . oil in marble, 20 x 10 cm\n\n@eduardo_berliner #eduardoberliner @artbasel #abmb2024 @casatriangulo');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
+DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `Codigo` int(10) UNSIGNED NOT NULL,
   `Nome` varchar(100) NOT NULL,
@@ -162,56 +169,48 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Despejando dados para a tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`Codigo`, `Nome`, `Email`, `CPF`, `Senha`, `Telefone`, `DTNascimento`, `logradouro`, `complemento`, `bairro`, `localidade`, `uf`) VALUES
-(1, 'Cristian Serra Vieira Pinto', 'cristian.trt@gmail.com', '251.762.928', 'sp2013', '11982040343', '1976-06-04', 'Rua José Amaro Peçanha', '345', 'Parque São Domingos', 'São Paulo', 'SP'),
-(2, 'Semirames', 'semirames@fatec.sp.gov.br', '123456789-2', 'Cbdh375!', '1199876554', '1980-06-05', 'Rua da Consolação', '1272', 'Consolação', 'São Paulo', 'SP');
-
---
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `filtro`
+-- Índices para tabela `filtro`
 --
 ALTER TABLE `filtro`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `homepage`
+-- Índices para tabela `homepage`
 --
 ALTER TABLE `homepage`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `instituicoes`
+-- Índices para tabela `instituicoes`
 --
 ALTER TABLE `instituicoes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `midias`
+-- Índices para tabela `midias`
 --
 ALTER TABLE `midias`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`Codigo`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `filtro`
 --
 ALTER TABLE `filtro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `homepage`
@@ -229,13 +228,13 @@ ALTER TABLE `instituicoes`
 -- AUTO_INCREMENT de tabela `midias`
 --
 ALTER TABLE `midias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Codigo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Codigo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
