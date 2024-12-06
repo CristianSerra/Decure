@@ -82,10 +82,10 @@ function loga() {
     var auxsenha = document.getElementById("Senha").value;
 
     $.post("login.php", {
-        Email : auxemail
+        Email : auxemail,
+        Senha : auxsenha
     }, function(result){
-        senha=result;
-        if (senha==auxsenha) {
+        if (result=="true") {
             localStorage.setItem("usuario",auxemail);
             location.reload();
         }

@@ -1,6 +1,6 @@
 <?php
 include 'credencial.php';
-
+$novasenha="";
 $conexao = mysqli_connect($host, $username, $password, $dbname);
 $conexao->set_charset("utf8");
     
@@ -10,18 +10,18 @@ $conexao->set_charset("utf8");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["Email"];
+        $senha = $_POST["Senha"];
+        $novasenha = sha1($senha);
         banco("SELECT Senha FROM usuarios WHERE Email='$email'");
     }
     mysqli_close($conexao);
 
     function banco ($consulta)
     {
-            global $conexao;
+            global $conexao,$novasenha;
             $res = $conexao->query($consulta);
             while ($linha = $res->fetch_row()) {
-                for ($conta=0; $conta < count($linha); $conta++) {
-                    echo $linha[$conta];
-                }
+                if ($linha[0] == $novasenha) echo "true"; else echo "false";
             }
     }
 

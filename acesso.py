@@ -58,40 +58,33 @@ class InstagramBot:
         navega = self.driver
         site="https://www.instagram.com/"+url
         navega.get(site)
-        tempo(9)
+        tempo(7)
         posts = []
         elementos = []
         elementos = navega.find_elements(By.TAG_NAME, 'a')
         for postagem in elementos:
             post_link = postagem.get_attribute("href")
+            print (post_link)
             poststring="instagram.com/"+url+"/p"
             if poststring in post_link:
                 posts.append(post_link)
-        #for x in range(1):
         x=0
         navega.get(posts[x])
-        tempo(8)
-        global descricao, imagem
-        elemdesc = self.driver.find_element(By.XPATH,'/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[2]/div[1]/ul/div[1]/li/div/div/div[2]/div[1]/h1/text()[2]')
-        descricao = elemdesc.text        
-        elemimagem = self.driver.find_element(By.XPATH,'/html/body/div[7]/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div/div[1]/img')
-        imagem = elemimagem.get_attribute('src')
-        arquivo = "images/"+url+str(x)+".png"
-        #with(open(arquivo, "wb")) as fh:
-        #    fh.write(base64.decodebytes(imagem))
-        #urllib.request.urlretrieve(imagem,"images/"+url+"01.jpg")
+        tempo(4)
+        global descricao, imagem        
+        descricao = navega.find_element(By.XPATH,'/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div[2]/div[1]/article/div/div[2]/div/div[2]/div[1]/ul/div[1]/li/div/div/div[2]/div[1]/h1').text
+        imagem=navega.find_element(By.XPATH,'/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[1]/div[1]/section/main/div[2]/div[1]/article/div/div[1]/div/div[1]/div[2]/div/div/div/ul/li[2]/div/div/div/div/div[1]/img').get_attribute("src")
+        arquivo = "images/"+url+str(x)+".jpg"
+        urllib.request.urlretrieve(imagem,arquivo)
         dados['descricao']=descricao
-        dados['imagem']=imagem
-        print (dados)
-        tempo(10)
-        #conexao()
-        #tempo(100)
-
+        dados['imagem']=arquivo
+        conexao()
+        tempo(5)
 
 Bot = InstagramBot()
 Bot.login()
-tempo(90)
+tempo(10)
 
-for x in paginas:
-    Bot.pegaposts(x)    
-    tempo(10)
+for pag in paginas:
+    Bot.pegaposts(pag)
+    tempo(8)

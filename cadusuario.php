@@ -3,8 +3,9 @@ include 'credencial.php';
     
     // Conexão com o banco de dados
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     } catch (PDOException $e) {
         die("Erro na conexão com o banco de dados: " . $e->getMessage());
     }
@@ -26,12 +27,12 @@ include 'credencial.php';
     try {
         $sql = "INSERT INTO usuarios (Nome, Email, CPF, Senha, Telefone, DTNascimento, logradouro, complemento, bairro, localidade, uf) VALUES (:nome, :email, :cpf, :usersenha, :telefone, :dtNascimento, :logradouro, :complemento, :bairro, :localidade, :uf)";
         $stmt = $pdo->prepare($sql);
-
+        $novasenha = sha1($usersenha);
         // Vincular os parâmetros
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':cpf', $cpf);
-        $stmt->bindParam(':usersenha', $usersenha);
+        $stmt->bindParam(':usersenha', $novasenha);
         $stmt->bindParam(':telefone', $telefone);
         $stmt->bindParam(':dtNascimento', $dtNascimento);
         $stmt->bindParam(':logradouro', $logradouro);

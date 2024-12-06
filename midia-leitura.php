@@ -1,7 +1,7 @@
 <?php
 include 'credencial.php';
 
-$conexao = mysqli_connect($servidor, $usuario, $senha, $bancoDados);
+$conexao = mysqli_connect($host, $username, $password, $dbname);
 $conexao->set_charset("utf8");
 
 if ( $conexao->connect_errno ) {

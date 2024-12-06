@@ -3,7 +3,7 @@ include 'credencial.php';
 
     // Conexão com o banco de dados
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$bcodados", $usuario, $senha);
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         die("Erro na conexão com o banco de dados: " . $e->getMessage());
@@ -12,22 +12,14 @@ include 'credencial.php';
     if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
         $imagem= $_POST['imagem'];
         $descricao=$_POST['descricao'];
-        $endereco=$_POST['endereco'];
-        $contato=$_POST['contato'];
-        $agendamento=$_POST['agendamento'];
-        $link=$_POST['link'];
 
         try {
-            $sql = "INSERT INTO midias (imagem, descricao, endereco, contato, agendamento, link ) VALUES (:imagem,:descricao,:endereco, :contato, :agendamento,:link)";
+            $sql = "INSERT INTO midias (imagem, descricao ) VALUES (:imagem,:descricao)";
             $stmt = $pdo->prepare($sql);
             
             // Vincular os parâmetros
             $stmt->bindParam(':imagem', $imagem);
             $stmt->bindParam(':descricao', $descricao);
-            $stmt->bindParam(':endereco', $endereco);
-            $stmt->bindParam(':contato', $contato);
-            $stmt->bindParam(':agendamento', $agendamento);
-            $stmt->bindParam(':link', $link);
             
             // Executar o comando SQL
             $stmt->execute();
