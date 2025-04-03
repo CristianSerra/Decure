@@ -10,10 +10,11 @@ inicializarLoja = () => {
             filtro("EX");
             $(".nav-link").click(function() {
                 let key2 = this.getAttribute('key');
-                if (key="SN") {
+                if (key2=="SN") {
                     aboutUs();
                 } 
-                else filtro(key2);
+                else 
+                filtro(key2);
                 $("#painel").hide();
             });
         };
@@ -33,7 +34,7 @@ function aboutUs() {
         <h1>Missão, Visão e Valores</h1><br>
         
         <h2>Missão</h2><br>
-        <p>Democratizar o acesso a arte, conectando artistas, amantes da arte e o público em geral em um ambiente inspirador e inclusivo.</p>
+        <p>Democratizar o acesso à arte, conectando artistas, amantes da arte e o público em geral em um ambiente inspirador e inclusivo.</p>
         
         <h2>Visão</h2><br>
         <p>Ser o principal hub de arte online, reconhecido por sua qualidade, acessibilidade e por promover a conexão entre criadores e apreciadores.</p>
