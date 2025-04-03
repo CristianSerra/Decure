@@ -33,17 +33,17 @@ function aboutUs() {
     saida=`
         <h1>Missão, Visão e Valores</h1><br>
         
-        <h2>Missão</h2><br>
-        <p>Democratizar o acesso à arte, conectando artistas, amantes da arte e o público em geral em um ambiente inspirador e inclusivo.</p>
+        <h2>Missão</h2>
+        <p>Democratizar o acesso à arte, conectando artistas, amantes da arte e o público em geral em um ambiente inspirador e inclusivo.</p><br>
         
-        <h2>Visão</h2><br>
-        <p>Ser o principal hub de arte online, reconhecido por sua qualidade, acessibilidade e por promover a conexão entre criadores e apreciadores.</p>
+        <h2>Visão</h2>
+        <p>Ser o principal hub de arte online, reconhecido por sua qualidade, acessibilidade e por promover a conexão entre criadores e apreciadores.</p><br>
         
         <h2>Valores</h2>
         <p>
-        Acessibilidade: Tornar a arte acessível a todos, independentemente de seu conhecimento ou experiência.<br>
-        Inovação: Buscar constantemente novas formas de conectar pessoas e promover a arte através de ferramentas e estratégias inovadoras.<br>
-        Transformação: Nossa missão nos pede para desafiar o status quo. Abraçamos o feedback, o aprendizado e a mudança para que possamos transformar nossa indústria, nossa empresa e nós mesmos.<br>
+        Acessibilidade: Tornar a arte acessível a todos, independentemente de seu conhecimento ou experiência.<br><br>
+        Inovação: Buscar constantemente novas formas de conectar pessoas e promover a arte através de ferramentas e estratégias inovadoras.<br><br>
+        Transformação: Nossa missão nos pede para desafiar o status quo. Abraçamos o feedback, o aprendizado e a mudança para que possamos transformar nossa indústria, nossa empresa e nós mesmos.<br><br>
         Sustentabilidade: Usando arte e ciência, buscamos promover práticas éticas e sustentáveis em todas as etapas do negócio.
         </p>
     `;
