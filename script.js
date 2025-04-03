@@ -10,7 +10,10 @@ inicializarLoja = () => {
             filtro("EX");
             $(".nav-link").click(function() {
                 let key2 = this.getAttribute('key');
-                filtro(key2);
+                if (key="SN") {
+                    aboutUs();
+                } 
+                else filtro(key2);
                 $("#painel").hide();
             });
         };
@@ -19,6 +22,31 @@ inicializarLoja = () => {
         $(".navbar-brand").click(function() {
             location.reload();
         });
+}
+
+function aboutUs() {
+    let saida="";
+    var container = document.getElementById("cultura");
+    container.innerHTML=saida;
+    var container = document.getElementById("sobrenos");
+    saida=`
+        <h1>Missão, Visão e Valores</h1><br>
+        
+        <h2>Missão</h2><br>
+        <p>Democratizar o acesso a arte, conectando artistas, amantes da arte e o público em geral em um ambiente inspirador e inclusivo.</p>
+        
+        <h2>Visão</h2><br>
+        <p>Ser o principal hub de arte online, reconhecido por sua qualidade, acessibilidade e por promover a conexão entre criadores e apreciadores.</p>
+        
+        <h2>Valores</h2>
+        <p>
+        Acessibilidade: Tornar a arte acessível a todos, independentemente de seu conhecimento ou experiência.<br>
+        Inovação: Buscar constantemente novas formas de conectar pessoas e promover a arte através de ferramentas e estratégias inovadoras.<br>
+        Transformação: Nossa missão nos pede para desafiar o status quo. Abraçamos o feedback, o aprendizado e a mudança para que possamos transformar nossa indústria, nossa empresa e nós mesmos.<br>
+        Sustentabilidade: Usando arte e ciência, buscamos promover práticas éticas e sustentáveis em todas as etapas do negócio.
+        </p>
+    `;
+    container.innerHTML=saida;
 }
 
 function filtro(chave) {
