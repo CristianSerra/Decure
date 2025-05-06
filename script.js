@@ -31,6 +31,8 @@ function aboutUs() {
     container.innerHTML=saida;
     var container = document.getElementById("sobrenos");
     saida=`
+        Decure é uma plataforma digital que centraliza e divulga informações sobre exposições de artes visuais em galerias, museus e outras instituições culturais no Brasil de forma acessível e abrangente.<br><br>
+    
         <h1>Missão, Visão e Valores</h1><br>
         
         <h2>Missão</h2>
@@ -125,6 +127,7 @@ function loga() {
 }
 
 function cadastra() {
+    var auxnome = document.getElementById("Nome").value;
     $.post("cadusuario.php", {
         Nome: document.getElementById("Nome").value,
         Senha: document.getElementById("Senha").value,
@@ -139,7 +142,8 @@ function cadastra() {
         localidade: document.getElementById("localidade").value,
         uf: document.getElementById("uf").value
     }, function(result,status){
-        location.reload();
+            localStorage.setItem("usuario",auxnome);
+            location.reload();
     });
 }
 
