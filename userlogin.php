@@ -39,7 +39,6 @@ $stmt->bind_result($id, $senhaHashBD);
 if ($stmt->fetch()) {
     if ($senhaHashBD === $senha) {
         $stmt->close();
-
         // Gera token seguro
         $token = bin2hex(random_bytes(32)); // 64 caracteres
 
@@ -53,14 +52,16 @@ if ($stmt->fetch()) {
         $response["token"] = $token;
     } else {
         $response["error"] = "Senha incorreta.";
+		$stmt->close();
     }
 } else {
     $response["error"] = "Usuário não encontrado.";
+	$stmt->close();
 }
 
 echo json_encode($response);
 
-$stmt->close();
+
 $conexao->close();
 
 
