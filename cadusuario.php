@@ -1,63 +1,90 @@
 <?php
 include 'credencial.php';
-    
-    // Conexão com o banco de dados
-    try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+header('Content-Type: application/json');
 
-    } catch (PDOException $e) {
-        die("Erro na conexão com o banco de dados: " . $e->getMessage());
-    }
+// Permite apenas método POST
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    http_response_code(405);
+    echo json_encode(["success" => false, "error" => "Método inválido. Use POST."]);
+    exit();
+}
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nome = $_POST["Nome"];
-        $email = $_POST["Email"];
-        $cpf = $_POST["CPF"];
-        $usersenha = $_POST["Senha"];
-        $telefone = $_POST["Telefone"];
-        $dtNascimento = $_POST["DTNascimento"];
-        $logradouro = $_POST["logradouro"];
-        $complemento = $_POST["complemento"];
-        $bairro = $_POST["bairro"];
-        $localidade = $_POST["localidade"];
-        $uf = $_POST["uf"];
+// Verifica campos obrigatórios
+if (empty($_POST["Email"]) || empty($_POST["Senha"]) || empty($_POST["Nome"])) {
+    echo json_encode(["success" => false, "error" => "Campos obrigatórios ausentes (Nome, Email ou Senha)."]);
+    exit();
+}
 
-    // Inserir os dados no banco de dados
-    try {
-        $sql = "INSERT INTO usuarios (Nome, Email, CPF, Senha, Telefone, DTNascimento, logradouro, complemento, bairro, localidade, uf) VALUES (:nome, :email, :cpf, :usersenha, :telefone, :dtNascimento, :logradouro, :complemento, :bairro, :localidade, :uf)";
-        $stmt = $pdo->prepare($sql);
-        $novasenha = sha1($usersenha);
-        // Vincular os parâmetros
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':cpf', $cpf);
-        $stmt->bindParam(':usersenha', $novasenha);
-        $stmt->bindParam(':telefone', $telefone);
-        $stmt->bindParam(':dtNascimento', $dtNascimento);
-        $stmt->bindParam(':logradouro', $logradouro);
-        $stmt->bindParam(':complemento', $complemento);
-        $stmt->bindParam(':bairro', $bairro);
-        $stmt->bindParam(':localidade', $localidade);
-        $stmt->bindParam(':uf', $uf);
-        
-        // Executar o comando SQL
-        $stmt->execute();
+// Conecta ao banco
+$conexao = new mysqli($host, $username, $password, $dbname);
+$conexao->set_charset("utf8");
 
-        echo '
-        <!DOCTYPE html>
-        <html lang="pt-BR">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </head>
-        <body>
-        <a href="index.html">Cadastro Efetivado. Clique aqui para voltar</a>
-        </body>
-        </html>
-        ';
-        } catch (PDOException $e) {
-            die("Erro ao inserir dados: " . $e->getMessage());
-        }
-    }
+if ($conexao->connect_errno) {
+    http_response_code(500);
+    echo json_encode(["success" => false, "error" => "Erro de conexão com o banco de dados."]);
+    exit();
+}
+
+// Campos obrigatórios
+$nome       = $_POST["Nome"];
+$email      = $_POST["Email"];
+$usersenha  = $_POST["Senha"];
+$novasenha  = password_hash($usersenha, PASSWORD_DEFAULT); // mais seguro que SHA1
+
+// Campos opcionais
+$cpf         = $_POST["CPF"] ?? "";
+$telefone    = $_POST["Telefone"] ?? "";
+$dtNascimento = $_POST["DTNascimento"] ?? null; // pode ser null
+$logradouro  = $_POST["logradouro"] ?? "";
+$complemento = $_POST["complemento"] ?? "";
+$bairro      = $_POST["bairro"] ?? "";
+$localidade  = $_POST["localidade"] ?? "";
+$uf          = $_POST["uf"] ?? "";
+$token       = bin2hex(random_bytes(32));
+
+$stmread = $conexao->prepare("SELECT id, Nome FROM usuarios WHERE Email = ?");
+$stmread->bind_param("s", $email);
+$stmread->execute();
+$stmread->bind_result($id, $nome);
+
+if ($stmread->fetch()) {
+    echo json_encode(["success" => false, "error" => "Usuário já cadastrado " . $email]);
+    $stmread->close();
+    $conexao->close();
+    exit();
+}
+$stmread->close();
+
+// Prepara a query com placeholders ?
+$sql = "INSERT INTO usuarios (
+    Nome, Email, CPF, Senha, Telefone, DTNascimento, 
+    logradouro, complemento, bairro, localidade, uf, token
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = $conexao->prepare($sql);
+
+if (!$stmt) {
+    echo json_encode(["success" => false, "error" => "Erro na preparação da query: " . $conexao->error]);
+    exit();
+}
+
+// Liga os parâmetros (tudo string, exceto dtNascimento que pode ser null)
+$stmt->bind_param(
+    "ssssssssssss",
+    $nome, $email, $cpf, $novasenha, $telefone,
+    $dtNascimento, $logradouro, $complemento, $bairro,
+    $localidade, $uf, $token
+);
+
+// Executa
+if ($stmt->execute()) {
+    echo json_encode(["success" => true, "token" => $token, "usuario" => $nome]);
+} else {
+    echo json_encode(["success" => false, "error" => "Erro ao inserir: " . $stmt->error]);
+}
+
+// Fecha conexão
+$stmt->close();
+$conexao->close();
+exit();
 ?>

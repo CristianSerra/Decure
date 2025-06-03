@@ -16,8 +16,7 @@ if (!isset($_POST["Email"]) || !isset($_POST["Senha"])) {
 }
 
 $email = $_POST["Email"];
-$senha = sha1($_POST["Senha"]);
-
+$senha = $_POST["Senha"];
 $response = ["success" => false];
 
 // Conecta ao banco
@@ -31,13 +30,13 @@ if ($conexao->connect_errno) {
 }
 
 // Consulta com prepared statement
-$stmt = $conexao->prepare("SELECT id, Senha FROM usuarios WHERE Email = ?");
+$stmt = $conexao->prepare("SELECT id, Nome, Senha FROM usuarios WHERE Email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
-$stmt->bind_result($id, $senhaHashBD);
+$stmt->bind_result($id, $nome, $passBD);
 
 if ($stmt->fetch()) {
-    if ($senhaHashBD === $senha) {
+    if (password_verify($senha, $passBD)) {
         $stmt->close();
         // Gera token seguro
         $token = bin2hex(random_bytes(32)); // 64 caracteres
@@ -50,20 +49,19 @@ if ($stmt->fetch()) {
 
         $response["success"] = true;
         $response["token"] = $token;
+        $response["usuario"] = $nome;
     } else {
         $response["error"] = "Senha incorreta.";
 		$stmt->close();
     }
 } else {
     $response["error"] = "Usuário não encontrado.";
-	$stmt->close();
+    $stmt->close();
 }
 
 echo json_encode($response);
 
-
 $conexao->close();
-
 
 exit();
 ?>

@@ -127,7 +127,6 @@ function loga() {
 }
 
 function cadastra() {
-    var auxnome = document.getElementById("Nome").value;
     $.post("cadusuario.php", {
         Nome: document.getElementById("Nome").value,
         Senha: document.getElementById("Senha").value,
@@ -142,8 +141,7 @@ function cadastra() {
         localidade: document.getElementById("localidade").value,
         uf: document.getElementById("uf").value
     }, function(result,status){
-            localStorage.setItem("usuario",auxnome);
-            location.reload();
+        location.reload();
     });
 }
 
