@@ -5,19 +5,21 @@ header('Content-Type: application/json');
 
 // Verifica se os dados foram enviados via POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    http_response_code(405); // Método não permitido
-    echo json_encode(["success" => false, "error" => "Método inválido. Use POST."]);
+    http_response_code(400); 
+    echo json_encode(["success" => false, "error" => "Falha na requisicao"]);
     exit();
 }
 
 // Verifica se os campos obrigatórios existem
 if (!isset($_POST["Email"]) || !isset($_POST["Token"])) {
-    echo json_encode(["success" => false, "error" => "Campos 'Email' e 'Token' são obrigatórios."]);
+    http_response_code(400);
+    echo json_encode(["success" => false, "error" => "Falha na requisicao"]);
     exit();
 }
 
 $email = $_POST["Email"];
 $token = $_POST["Token"];
+$data  = date("Y-m-d H:i:s");
 
 $response = ["success" => false];
 
@@ -27,20 +29,28 @@ $conexao->set_charset("utf8");
 
 if ($conexao->connect_errno) {
     http_response_code(500);
-    echo json_encode(["success" => false, "error" => "Erro de conexão com o banco de dados."]);
+    echo json_encode(["success" => false, "error" => "Erro de conexão"]);
     exit();
 }
 
 // Consulta por token
-$stmt = $conexao->prepare("SELECT token FROM usuarios WHERE Email = ? AND token = ?");
+$stmt = $conexao->prepare("SELECT token, created_at FROM usuarios WHERE Email = ? AND token = ?");
 $stmt->bind_param("ss", $email, $token);
 $stmt->execute();
-$stmt->bind_result($tokenlido);
+$stmt->bind_result($tokenlido,$dtcriado);
 
 if ($stmt->fetch()) {
         $stmt->close();
+        $dtCriadoObj = new DateTime($dtcriado);
+        $dtCriadoObj->modify('+23 hours');
+        $dataObj = new DateTime($data);
+        if ($dataObj <= $dtCriadoObj) {
         // ler dados dos eventos
-        banco("SELECT * FROM homepage");    
+            banco("SELECT * FROM homepage");
+        } else {
+            $response["error"] = "token expirado.";
+            echo json_encode($response); 
+        }
 } else {
         $stmt->close();
         $response["error"] = "token inválido.";
