@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: artmap.mysql.dbaas.com.br
--- Generation Time: 09-Jun-2025 às 09:10
+-- Generation Time: 09-Jun-2025 às 22:04
 -- Versão do servidor: 5.7.32-35-log
 -- PHP Version: 5.6.40-0+deb8u12
 
@@ -149,7 +149,7 @@ CREATE TABLE `usuarios` (
   `localidade` varchar(120) DEFAULT NULL,
   `uf` varchar(10) DEFAULT NULL,
   `token` varchar(64) NOT NULL,
-  `created_at` date NOT NULL
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -218,7 +218,7 @@ ALTER TABLE `midias`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

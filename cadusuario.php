@@ -10,14 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 
 // Verifica campos obrigatórios
-if (empty($_POST["Email"]) || empty($_POST["Senha"]) || empty($_POST["Nome"])) {
+if (!isset($_POST["Email"]) || !isset($_POST["Senha"]) || !isset($_POST["Nome"]) ) {
     http_response_code(400);
     echo json_encode(["success" => false, "error" => "Falha na Requisicao"]);
     exit();
 }
 
 // Conecta ao banco
-$conexao = new mysqli($host, $username, $password, $dbname);
+$conexao = mysqli_connect($host, $username, $password, $dbname);
 $conexao->set_charset("utf8");
 
 if ($conexao->connect_errno) {
@@ -44,6 +44,9 @@ $uf          = $_POST["uf"] ?? "";
 $token       = bin2hex(random_bytes(32));
 $data        = date("Y-m-d H:i:s");
 
+$response = ["success" => false];
+
+// consulta se usuario existente
 $stmread = $conexao->prepare("SELECT id, Nome FROM usuarios WHERE Email = ?");
 $stmread->bind_param("s", $email);
 $stmread->execute();
@@ -57,7 +60,7 @@ if ($stmread->fetch()) {
 }
 $stmread->close();
 
-// Prepara a query com placeholders ?
+// Prepara a query 
 $sql = "INSERT INTO usuarios (
     Nome, Email, CPF, Senha, Telefone, DTNascimento, 
     logradouro, complemento, bairro, localidade, uf, token, created_at
@@ -72,7 +75,7 @@ if (!$stmt) {
 
 // Liga os parâmetros (tudo string, exceto dtNascimento que pode ser null)
 $stmt->bind_param(
-    "ssssssssssss",
+    "sssssssssssss",
     $nome, $email, $cpf, $novasenha, $telefone,
     $dtNascimento, $logradouro, $complemento, $bairro,
     $localidade, $uf, $token, $data
@@ -80,7 +83,7 @@ $stmt->bind_param(
 
 // Executa
 if ($stmt->execute()) {
-    echo json_encode(["success" => true, "token" => $token, "usuario" => $nome], "data" => $data);
+    echo json_encode(["success" => true, "token" => $token, "usuario" => $nome, "data" => $data]);
 } else {
     echo json_encode(["success" => false, "error" => "Erro ao inserir: " . $stmt->error]);
 }
@@ -89,4 +92,5 @@ if ($stmt->execute()) {
 $stmt->close();
 $conexao->close();
 exit();
+
 ?>
