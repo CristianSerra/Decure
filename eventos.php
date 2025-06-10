@@ -42,7 +42,7 @@ $stmt->bind_result($tokenlido,$dtcriado);
 if ($stmt->fetch()) {
         $stmt->close();
         $dtCriadoObj = new DateTime($dtcriado);
-        $dtCriadoObj->modify('+23 hours');
+        $dtCriadoObj->modify('+23 hours'); //verifica validade do token
         $dataObj = new DateTime($data);
         if ($dataObj <= $dtCriadoObj) {
         // ler dados dos eventos
@@ -67,7 +67,6 @@ function banco ($consulta)
         $dados = array();
         while($row = mysqli_fetch_assoc($res)) {
                 $dados[]=$row;
-
         }
         $response["success"] = true;
         $response["token"] = $token;

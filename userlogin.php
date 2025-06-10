@@ -61,7 +61,7 @@ if ($stmt->fetch()) {
     $response["error"] = "Usuário não encontrado.";
     $stmt->close();
 }
-
+// envia resposta formato json
 echo json_encode($response);
 
 $conexao->close();
